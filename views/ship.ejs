@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Design by foolishdeveloper.com -->
-    <title>Glassmorphism login Form Tutorial in html css</title>
+    <title>Travel-Pro</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -93,27 +93,28 @@ button{
 </head>
 <body>
     
-    <form action="/index.html">
-        <h3>Flight Ticket</h3>
+    <form action="/createShip" method="POST">
+        <%- include ('./partials/messages') %>
+        <h3>Shipment Ticket</h3>
 
-        <input type="text" placeholder="Name" id="name">
-        <input type="text" placeholder="Seat" id="seat">
+        <input type="text" placeholder="Name" name="name" id="name" value="<%= typeof name != 'undefined' ? name : '' %>">
+        <input type="text" placeholder="Order Number" name="orderNumber" id="seat" value="<%= typeof orderNumber != 'undefined' ? orderNumber : '' %>">
         <div style="display: flex;">
-        <input type="text" placeholder="Gate " id="gate" style="margin-right: 5px;">
-        <input type="text" placeholder="Flight No e.g BA 0254 " id="flightNo">
+        <input type="text" placeholder="Gate" name="gate" id="gate" style="margin-right: 5px;" value="<%= typeof gate != 'undefined' ? gate : '' %>" >
+        <input type="text" placeholder="Flight No e.g BA 0254" name="flightNo" id="flightNo" value="<%= typeof flightNo != 'undefined' ? flightNo : '' %>">
         </div>
 
         <div style="display: flex;">
-            <input type="text" placeholder="Ticket Class " id="class" style="margin-right: 5px;">
-            <input type="text" placeholder="time " id="time">
+            <input type="text" placeholder="Shipment Type " id="shipmentType" name="shipmentType" style="margin-right: 5px;"  value="<%= typeof shipmentType != 'undefined' ? shipmentType : '' %>">
+            <input type="text" placeholder="time " id="time" name="time" value="<%= typeof time != 'undefined' ? time : '' %>">
         </div>
         
         <div style="display: flex;">
-            <input type="text" placeholder="From " id="from" style="margin-right: 5px;">
-            <input type="text" placeholder="to " id="to">
+            <input type="text" placeholder="From " id="from" name="from" style="margin-right: 5px;" value="<%= typeof from != 'undefined' ? from : '' %>" >
+            <input type="text" placeholder="to " id="to" name="to" value="<%= typeof to != 'undefined' ? to : '' %>">
         </div>
        
-        <input type="text" placeholder="Depature Time " id="dep">
+        <input type="text" placeholder="Departure Time" name="departure" id="dep" value="<%= typeof departure != 'undefined' ? departure : '' %>">
 
 
         

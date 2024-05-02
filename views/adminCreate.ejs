@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Design by foolishdeveloper.com -->
-    <title>Glassmorphism login Form Tutorial in html css</title>
+    <title>Travel-Pro</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -17,7 +17,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: whitesmoke;
+    background-color: #080710;
 }
 .background{
     width: 430px;
@@ -33,19 +33,36 @@ body{
     position: absolute;
     border-radius: 50%;
 }
-
-
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -80px;
+    top: -80px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -30px;
+    bottom: -80px;
+}
 form{
     height: 520px;
     width: 400px;
-    background-color: black;
+    background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
-    padding: 10px 35px;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 50px 35px;
 }
 form *{
     font-family: 'Poppins',sans-serif;
@@ -61,7 +78,12 @@ form h3{
     text-align: center;
 }
 
-
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
 input{
     display: block;
     height: 50px;
@@ -87,38 +109,44 @@ button{
     border-radius: 5px;
     cursor: pointer;
 }
-
+.social{
+  margin-top: 30px;
+  display: flex;
+}
+.social div{
+  background: red;
+  width: 150px;
+  border-radius: 3px;
+  padding: 5px 10px 10px 5px;
+  background-color: rgba(255,255,255,0.27);
+  color: #eaf0fb;
+  text-align: center;
+}
+.social div:hover{
+  background-color: rgba(255,255,255,0.47);
+}
+.social .fb{
+  margin-left: 25px;
+}
+.social i{
+  margin-right: 4px;
+}
 
     </style>
 </head>
 <body>
     
-    <form action="/index.html">
-        <h3>Shipment Ticket</h3>
+    <form action="/admincreate" method="POST" >
+        <%- include ('./partials/messages') %>
+        <h3>Create Admin</h3>
 
-        <input type="text" placeholder="Item Name" id="name">
-        <input type="text" placeholder="Order Number e.g 0123" id="seat">
-        <div style="display: flex;">
-        <input type="text" placeholder="Gate " id="gate" style="margin-right: 5px;">
-        <input type="text" placeholder="Ship No e.g  0254 " id="flightNo">
-        </div>
+        <label for="username">Email</label>
+        <input type="text" name="email" placeholder="Email" id="email" value="<%= typeof email != 'undefined' ? email : '' %>">
 
-        <div style="display: flex;">
-            <input type="text" placeholder="Shipment Type " id="class" style="margin-right: 5px;">
-            <input type="text" placeholder="time e.g 12:25" id="time">
-        </div>
-        
-        <div style="display: flex;">
-            <input type="text" placeholder="From " id="from" style="margin-right: 5px;">
-            <input type="text" placeholder="to " id="to">
-        </div>
-       
-        <input type="text" placeholder="Date " id="date">
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Password" id="password"  value="<%= typeof password != 'undefined' ? password : '' %>">
 
-
-        
-
-        <button type="submit">Create Ticket</button>
+        <button type="submit">Create</button>
        
     </form>
 </body>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Design by foolishdeveloper.com -->
-    <title>Glassmorphism login Form Tutorial in html css</title>
+    <title>Travel-Pro</title>
  
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -136,14 +136,15 @@ button{
 </head>
 <body>
     
-    <form action="/index.html">
+    <form action="/login" method="POST" >
+        <%- include ('./partials/messages') %>
         <h3>Login Here</h3>
 
         <label for="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username">
+        <input type="text" name="email" placeholder="Email" id="username" value="<%= typeof email != 'undefined' ? email : '' %>">
 
         <label for="password">Password</label>
-        <input type="password" placeholder="Password" id="password">
+        <input type="password" name="password" placeholder="Password" id="password" value="<%= typeof password != 'undefined' ? password : '' %>">
 
         <button type="submit">Log In</button>
        
