@@ -20,32 +20,21 @@ body{
     background-color: whitesmoke;
 }
 .background{
-    width: 430px;
-    height: 520px;
+    
     position: absolute;
     transform: translate(-50%,-50%);
     left: 50%;
     top: 50%;
 }
 .background .shape{
-    height: 200px;
-    width: 200px;
+   
     position: absolute;
     border-radius: 50%;
 }
 
 
 form{
-    height: 520px;
-    width: 400px;
     background-color: black;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    padding: 50px 35px;
 }
 form *{
     font-family: 'Poppins',sans-serif;
@@ -79,8 +68,8 @@ input{
 button{
     margin-top: 50px;
     width: 100%;
-    background-color: #ffffff;
-    color: #080710;
+    background-color: #080710;
+    color: white;
     padding: 15px 0;
     font-size: 18px;
     font-weight: 600;
@@ -92,45 +81,66 @@ button{
     </style>
 </head>
 <body>
+
+    <div>
+        <form action="/createShip" method="POST">
+            <%- include ('./partials/messages') %>
+            <h3>Shipment Ticket</h3>
+            <p style="text-align: center;">All MUST BE IN UPPERCASE LETTER</p>
     
-    <form action="/createShip" method="POST">
-        <%- include ('./partials/messages') %>
-        <h3>Shipment Ticket</h3>
-        <p style="text-align: center;">All MUST BE IN UPPERCASE LETTER</p>
+    
+            <input type="text" placeholder="item name e.g  e.g TOYOTA 2024 MODEL" id="name" name="name" value="<%= typeof name != 'undefined' ? name : '' %>">
+            <input type="text" placeholder="Order Number e.g 02234" name="orderNumber" id="seat" value="<%= typeof orderNumber != 'undefined' ? orderNumber : '' %>">
+            <div style="display: flex;">
+            <input type="text" placeholder="Gate e.g 056" name="gate" id="gate" style="margin-right: 5px;" value="<%= typeof gate != 'undefined' ? gate : '' %>" >
+            <input type="text" placeholder="No e.g BA 0254" name="shipmentNo" id="flightNo" value="<%= typeof shipmentNo != 'undefined' ? shipmentNo : '' %>">
+            </div>
+    
+            <div style="display: flex;">
+                <select id="class"  name="shipmentType" style="margin-right: 5px; background-color: #080710; width: 50vw;">
+                    <option value="">Select Shipment</option>
+                    <option value="AIR FREIGHT">Air Freight</option>
+                    <option value="SEA FREIGHT">Sea Freight</option>
+                    <option value="RAIL FREIGHT">Rail Freight</option>
+                    <option value="ROAD FREIGHT">Road Freight</option>
+                    <option value="EXPRESS SHIPPING">Express Shipping</option>
+                    <!-- Add more options for additional classes if needed -->
+                </select>            
+                <input type="text" placeholder="time e.g 14:55 " id="time" name="time" value="<%= typeof time != 'undefined' ? time : '' %>">
+            </div>
+            
+            <div style="display: flex;">
+                <input type="text" placeholder="From e.g CALIFORNIA " id="from" name="from" style="margin-right: 5px;" value="<%= typeof from != 'undefined' ? from : '' %>" >
+                <input type="text" placeholder="to e.g LAS VEGAS " id="to" name="to" value="<%= typeof to != 'undefined' ? to : '' %>">
+            </div>
 
+            <input type="text" placeholder="date e.g 12/3/2014" name="departure" value="<%= typeof departure != 'undefined' ? departure : '' %>">
 
-        <input type="text" placeholder="item name e.g  e.g TOYOTA 2024 MODEL" id="name" name="name" value="<%= typeof name != 'undefined' ? name : '' %>">
-        <input type="text" placeholder="Order Number e.g 02234" name="orderNumber" id="seat" value="<%= typeof orderNumber != 'undefined' ? orderNumber : '' %>">
-        <div style="display: flex;">
-        <input type="text" placeholder="Gate e.g 056" name="gate" id="gate" style="margin-right: 5px;" value="<%= typeof gate != 'undefined' ? gate : '' %>" >
-        <input type="text" placeholder="No e.g BA 0254" name="shipmentNo" id="flightNo" value="<%= typeof shipmentNo != 'undefined' ? shipmentNo : '' %>">
-        </div>
+           
+           <h5>Input all items in this format</h5>
+            <input type="text" placeholder="items e.g 1 iphone 11pro  x3" name="item1" value="<%= typeof item1 != 'undefined' ? item1 : '' %>">
+            <input type="text" placeholder="items e.g 2 iphone 12pro  x3" name="item2"  value="<%= typeof item2 != 'undefined' ? item2 : '' %>">
+            <input type="text" placeholder="items e.g 3 hp Laptop elite book  x3" name="item3" value="<%= typeof item3 != 'undefined' ? item3 : '' %>">
+            <input type="text" placeholder="items e.g 4 hp Laptop elite book  x3" name="item4"  value="<%= typeof item4 != 'undefined' ? item4 : '' %>">
+            <input type="text" placeholder="items e.g 5 hp Laptop elite book  x3" name="item5" value="<%= typeof item5 != 'undefined' ? item5 : '' %>">
+            <input type="text" placeholder="items e.g 6 hp Laptop elite book  x3" name="item6"  value="<%= typeof item6 != 'undefined' ? item6 : '' %>">
+            <input type="text" placeholder="items e.g 7 hp Laptop elite book  x3" name="item7"  value="<%= typeof item7 != 'undefined' ? item7 : '' %>">
+            <input type="text" placeholder="items e.g 8 hp Laptop elite book  x3" name="item8"  value="<%= typeof item8 != 'undefined' ? item8 : '' %>">
+            <input type="text" placeholder="items e.g 9 hp Laptop elite book  x3" name="item9"  value="<%= typeof item9 != 'undefined' ? item9 : '' %>">
+            <input type="text" placeholder="items e.g 10 hp Laptop elite book  x3" name="item10" value="<%= typeof item10 != 'undefined' ? item10 : '' %>">
+    
+           
+    
+    
+    
+            
+    
+            <button type="submit">Create Ticket</button>
+           
+        </form>
 
-        <div style="display: flex;">
-            <select id="class"  name="shipmentType" style="margin-right: 5px; background-color: #080710;">
-                <option value="">Select Shipment</option>
-                <option value="Air Freight">Air Freight</option>
-                <option value="Sea Freight">Sea Freight</option>
-                <option value="Rail Freight">Rail Freight</option>
-                <option value="Road Freight">Road Freight</option>
-                <option value="Express Shipping">Express Shipping</option>
-                <!-- Add more options for additional classes if needed -->
-            </select>            
-            <input type="text" placeholder="time e.g 14:55 " id="time" name="time" value="<%= typeof time != 'undefined' ? time : '' %>">
-        </div>
-        
-        <div style="display: flex;">
-            <input type="text" placeholder="From e.g CALIFORNIA " id="from" name="from" style="margin-right: 5px;" value="<%= typeof from != 'undefined' ? from : '' %>" >
-            <input type="text" placeholder="to e.g LAS VEGAS " id="to" name="to" value="<%= typeof to != 'undefined' ? to : '' %>">
-        </div>
-       
-        <input type="text" placeholder="Day e.g 12/MAY/2024" name="departure" id="dep" value="<%= typeof departure != 'undefined' ? departure : '' %>">
-
-
-        
-
-        <button type="submit">Create Ticket</button>
-       
-    </form>
+    </div>
+    
+  
 </body>
 </html>

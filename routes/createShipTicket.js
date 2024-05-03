@@ -21,7 +21,7 @@ router.post('/createShip', async (req, res) => {
     }
     
     const randomString = generateRandomString(16);
-    let { name, orderNumber, gate, shipmentNo, time, shipmentType, from, to, departure } = req.body;
+    let { name, orderNumber, gate, shipmentNo, time, shipmentType, from, to, departure, item1, item2, item3, item4, item5, item6, item7, item8, item9, item10 } = req.body;
     let client = randomString
 
     let errors = [];
@@ -42,8 +42,18 @@ router.post('/createShip', async (req, res) => {
             shipmentType,
             from,
             to,
-            departure
-        });
+            departure,
+            item1,
+            item2, 
+            item3,
+            item4,
+            item5, 
+            item6, 
+            item7, 
+            item8, 
+            item9, 
+            item10       
+         });
     }
 
   
@@ -60,7 +70,18 @@ router.post('/createShip', async (req, res) => {
         from,
         to,
         departure,
-        client
+        client,
+        item1,
+        item2, 
+        item3,
+        item4,
+        item5, 
+        item6, 
+        item7, 
+        item8, 
+        item9, 
+        item10
+
     });
 
     await newShipTicket.save();
