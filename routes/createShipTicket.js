@@ -21,23 +21,23 @@ router.post('/createShip', async (req, res) => {
     }
     
     const randomString = generateRandomString(16);
-    let { name, orderNumber, gate, flightNo, time, shipmentType, from, to, departure } = req.body;
+    let { name, orderNumber, gate, shipmentNo, time, shipmentType, from, to, departure } = req.body;
     let client = randomString
 
     let errors = [];
-    if (!name || !orderNumber || !gate || !flightNo || !time || !shipmentType || !from || !to || !departure) {
+    if (!name || !orderNumber || !gate || !shipmentNo || !time || !shipmentType || !from || !to || !departure) {
         errors.push({ msg: "Please fill in all fields" });
     }
 
     
 
     if (errors.length > 0) {
-        return res.render('flight', {
+        return res.render('ship', {
             errors,
             name,
             orderNumber,
             gate,
-            flightNo,
+            shipmentNo,
             time,
             shipmentType,
             from,
@@ -54,7 +54,7 @@ router.post('/createShip', async (req, res) => {
         name,
         orderNumber,
         gate,
-        flightNo,
+        shipmentNo,
         time,
         shipmentType,
         from,

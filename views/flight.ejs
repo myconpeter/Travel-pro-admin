@@ -96,25 +96,33 @@ button{
     <form action="/createPlane" method="POST">
         <%- include ('./partials/messages') %>
         <h3>Flight Ticket</h3>
+        <p style="text-align: center;">All MUST BE IN UPPERCASE LETTER</p>
 
-        <input type="text" placeholder="Name" name="name" id="name" value="<%= typeof name != 'undefined' ? name : '' %>">
-        <input type="text" placeholder="Seat" name="seat" id="seat" value="<%= typeof seat != 'undefined' ? seat : '' %>">
+        <input type="text" placeholder="Full Name e.g JOHN PETER" name="name" id="name" value="<%= typeof name != 'undefined' ? name : '' %>">
+        <input type="text" placeholder="Plane Seat e.g 0413" name="seat" id="seat" value="<%= typeof seat != 'undefined' ? seat : '' %>">
         <div style="display: flex;">
-        <input type="text" placeholder="Gate" name="gate" id="gate" style="margin-right: 5px;" value="<%= typeof gate != 'undefined' ? gate : '' %>" >
-        <input type="text" placeholder="Flight No e.g BA 0254" name="flightNo" id="flightNo" value="<%= typeof flightNo != 'undefined' ? flightNo : '' %>">
+        <input type="text" placeholder="Gate e.g 023" name="gate" id="gate" style="margin-right: 5px;" value="<%= typeof gate != 'undefined' ? gate : '' %>" >
+        <input type="text" placeholder="No e.g BA 0254" name="flightNo" id="flightNo" value="<%= typeof flightNo != 'undefined' ? flightNo : '' %>">
         </div>
 
         <div style="display: flex;">
-            <input type="text" placeholder="Ticket Class " id="class" name="planeClass" style="margin-right: 5px;"  value="<%= typeof planeClass != 'undefined' ? planeClass : '' %>">
-            <input type="text" placeholder="time " id="time" name="time" value="<%= typeof time != 'undefined' ? time : '' %>">
+            <select id="class"  name="planeClass" style="margin-right: 5px; background-color: #080710;">
+                <option value="">Select Ticket Class</option>
+                <option value="First Class">First Class</option>
+                <option value="Business Class">Business Class</option>
+                <option value="Economy Class">Economy Class</option>
+                <!-- Add more options for additional classes if needed -->
+            </select>
+            
+            <input type="text" placeholder="time e.g 14:44 " id="time" name="time" value="<%= typeof time != 'undefined' ? time : '' %>">
         </div>
         
         <div style="display: flex;">
-            <input type="text" placeholder="From " id="from" name="from" style="margin-right: 5px;" value="<%= typeof from != 'undefined' ? from : '' %>" >
-            <input type="text" placeholder="to " id="to" name="to" value="<%= typeof to != 'undefined' ? to : '' %>">
+            <input type="text" placeholder="From e.g ALASKA " id="from" name="from" style="margin-right: 5px;" value="<%= typeof from != 'undefined' ? from : '' %>" >
+            <input type="text" placeholder="to e.g LONDON " id="to" name="to" value="<%= typeof to != 'undefined' ? to : '' %>">
         </div>
        
-        <input type="text" placeholder="Departure Time" name="departure" id="dep" value="<%= typeof departure != 'undefined' ? departure : '' %>">
+        <input type="text" placeholder="Departure day e.g 12/SEPT/2024" name="departure" id="dep" value="<%= typeof departure != 'undefined' ? departure : '' %>">
 
 
         

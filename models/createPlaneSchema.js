@@ -4,7 +4,7 @@ const createPlaneSchema = mongoose.Schema({
     name:String,
     seat:String,
     gate:String,
-    flightN0:String,
+    flightNo:String,
     planeClass:String,
     time:String,
     from:String,

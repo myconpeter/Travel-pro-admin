@@ -4,7 +4,7 @@ const createShipSchema = mongoose.Schema({
     name:String,
     orderNumber:String,
     gate:String,
-    flightN0:String,
+    shipmentNo:String,
     shipmentType:String,
     time:String,
     from:String,

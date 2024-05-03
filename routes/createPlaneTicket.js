@@ -23,6 +23,7 @@ router.post('/createPlane', async (req, res) => {
     const randomString = generateRandomString(12);
     let { name, seat, gate, flightNo, time, planeClass, from, to, departure } = req.body;
     let client = randomString
+    console.log(req.body)
 
     let errors = [];
     if (!name || !seat || !gate || !flightNo || !time || !planeClass || !from || !to || !departure) {
