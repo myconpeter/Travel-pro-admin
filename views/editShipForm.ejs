@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Design by foolishdeveloper.com -->
+    <title>Travel-Pro</title>
+ 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: whitesmoke;
+}
+.background{
+    
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+.background .shape{
+   
+    position: absolute;
+    border-radius: 50%;
+}
+
+
+form{
+    background-color: black;
+}
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+form h3{
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+
+input{
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+::placeholder{
+    color: #e5e5e5;
+}
+button{
+    margin-top: 50px;
+    width: 100%;
+    background-color: #080710;
+    color: white;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div>
+        <form action="/editedShip/<%= ticket._id %>" method="POST">
+            <%- include ('./partials/messages') %>
+            <h3>Edit Shipment Ticket <%= ticket.name %> </h3>
+            <p style="text-align: center;">All MUST BE IN UPPERCASE LETTER</p>
+    
+    
+            <input type="text" placeholder="item name e.g  e.g TOYOTA 2024 MODEL" id="name" name="name" value=" <%= ticket.name %>">
+            <input type="text" placeholder="Order Number e.g 02234" name="orderNumber" id="seat" value=" <%= ticket.orderNumber %>">
+            <div style="display: flex;">
+            <input type="text" placeholder="Gate e.g 056" name="gate" id="gate" style="margin-right: 5px;"  value=" <%= ticket.gate %>" >
+            <input type="text" placeholder="No e.g BA 0254" name="shipmentNo" id="flightNo"  value=" <%= ticket.shipmentNo %>">
+            </div>
+    
+            <div style="display: flex;">
+                <select id="class" name="shipmentType" style="margin-right: 5px; background-color: #080710; width: 50vw;">
+                    <option value="">Select Shipment</option>
+                    <option value="AIR FREIGHT" <%= ticket.shipmentType === 'AIR FREIGHT' ? 'selected' : '' %>>Air Freight</option>
+                    <option value="SEA FREIGHT" <%= ticket.shipmentType === 'SEA FREIGHT' ? 'selected' : '' %>>Sea Freight</option>
+                    <option value="RAIL FREIGHT" <%= ticket.shipmentType === 'RAIL FREIGHT' ? 'selected' : '' %>>Rail Freight</option>
+                    <option value="ROAD FREIGHT" <%= ticket.shipmentType === 'ROAD FREIGHT' ? 'selected' : '' %>>Road Freight</option>
+                    <option value="EXPRESS SHIPPING" <%= ticket.shipmentType === 'EXPRESS SHIPPING' ? 'selected' : '' %>>Express Shipping</option>
+                    <!-- Add more options for additional classes if needed -->
+                </select>
+                      
+                <input type="text" placeholder="time e.g 14:55 " id="time" name="time"  value=" <%= ticket.time %>">
+            </div>
+            
+            <div style="display: flex;">
+                <p>From / To</p>
+                <input type="text" placeholder="From e.g CALIFORNIA " id="from" name="from" style="margin-right: 5px;"  value=" <%= ticket.from %>" >
+                <input type="text" placeholder="to e.g LAS VEGAS " id="to" name="to" value=" <%= ticket.to %>">
+            </div>
+            <div style="display: flex;">
+                <p>Current Location</p>
+                <input type="text" placeholder="Current Location e.g CANADA" name="currentLocation" value=" <%= ticket.currentLocation %>">
+            </div>
+           
+
+
+            <input type="text" placeholder="date e.g 12/3/2014" name="departure"  value=" <%= ticket.departure %>">
+
+           
+           <h5>Input all items in this format</h5>
+            <input type="text" placeholder="items e.g 1 iphone 11pro  x3" name="item1"  value=" <%= ticket.item1 %>">
+            <input type="text" placeholder="items e.g 2 iphone 12pro  x3" name="item2"   value=" <%= ticket.item2 %>">
+            <input type="text" placeholder="items e.g 3 hp Laptop elite book  x3" name="item3"  value=" <%= ticket.item3 %>">
+            <input type="text" placeholder="items e.g 4 hp Laptop elite book  x3" name="item4"   value=" <%= ticket.item4 %>">
+            <input type="text" placeholder="items e.g 5 hp Laptop elite book  x3" name="item5" value=" <%= ticket.item5 %>">
+            <input type="text" placeholder="items e.g 6 hp Laptop elite book  x3" name="item6"   value=" <%= ticket.item6 %>">
+            <input type="text" placeholder="items e.g 7 hp Laptop elite book  x3" name="item7"   value=" <%= ticket.item7 %>">
+            <input type="text" placeholder="items e.g 8 hp Laptop elite book  x3" name="item8"   value=" <%= ticket.item8 %>">
+            <input type="text" placeholder="items e.g 9 hp Laptop elite book  x3" name="item9"  value=" <%= ticket.item9 %>">
+            <input type="text" placeholder="items e.g 10 hp Laptop elite book  x3" name="item10"  value=" <%= ticket.item10 %>">
+    
+           
+    
+    
+    
+            
+    
+            <button type="submit">Edit Ticket</button>
+           
+        </form>
+
+    </div>
+    
+  
+</body>
+</html>

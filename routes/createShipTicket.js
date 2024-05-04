@@ -21,11 +21,11 @@ router.post('/createShip', async (req, res) => {
     }
     
     const randomString = generateRandomString(16);
-    let { name, orderNumber, gate, shipmentNo, time, shipmentType, from, to, departure, item1, item2, item3, item4, item5, item6, item7, item8, item9, item10 } = req.body;
+    let { name, orderNumber, gate, shipmentNo, time, shipmentType, from, currentLocation, to, departure, item1, item2, item3, item4, item5, item6, item7, item8, item9, item10 } = req.body;
     let client = randomString
 
     let errors = [];
-    if (!name || !orderNumber || !gate || !shipmentNo || !time || !shipmentType || !from || !to || !departure) {
+    if (!name || !orderNumber || !gate || !shipmentNo || !time || !currentLocation || !shipmentType || !from || !to || !departure) {
         errors.push({ msg: "Please fill in all fields" });
     }
 
@@ -41,6 +41,7 @@ router.post('/createShip', async (req, res) => {
             time,
             shipmentType,
             from,
+            currentLocation,
             to,
             departure,
             item1,
@@ -68,6 +69,7 @@ router.post('/createShip', async (req, res) => {
         time,
         shipmentType,
         from,
+        currentLocation,
         to,
         departure,
         client,
@@ -101,7 +103,85 @@ router.get('/allShip', ensureAuthenticated,  async(req,res)=>{
 })
 
 
-router.get('/deleteShip/:id', async (req, res) => {
+router.get('/editShip/:id', ensureAuthenticated, async(req,res)=>{
+    // find through the req.params 
+    const ticket = await Ship.findById(req.params.id);
+    if(!ticket){
+        res.send('error, cannot get item')
+    }
+    res.render('editShipForm', { ticket });
+
+})
+
+// edit ship route
+
+
+router.post('/editedShip/:id', ensureAuthenticated, async(req, res)=>{
+    const {id} = req.params
+    const realItem = await Ship.findById(id)
+    const {
+        name,
+        orderNumber,
+        gate,
+        shipmentNo,
+        time,
+        shipmentType,
+        from,
+        currentLocation,
+        to,
+        departure,
+        client,
+        item1,
+        item2, 
+        item3,
+        item4,
+        item5, 
+        item6, 
+        item7, 
+        item8, 
+        item9, 
+        item10
+
+    } = req.body
+
+    if(!realItem){
+        res.send('error, cannot get item')
+    }
+  const editShip = await Ship.findByIdAndUpdate(id, {
+        name,
+        orderNumber,
+        gate,
+        shipmentNo,
+        time,
+        shipmentType,
+        from,
+        currentLocation,
+        to,
+        departure,
+        client,
+        item1,
+        item2, 
+        item3,
+        item4,
+        item5, 
+        item6, 
+        item7, 
+        item8, 
+        item9, 
+        item10
+  })
+
+  if(!editShip){
+    return res.send('error')
+  }
+
+  req.flash('success_msg','You have successfully update ' + name);
+  res.redirect('/');
+
+})
+
+
+router.get('/deleteShip/:id', ensureAuthenticated, async (req, res) => {
     const ticketId = req.params.id;
 
     try {

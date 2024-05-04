@@ -4,8 +4,10 @@ const passport = require ("passport");
 const {ensureAuthenticated} = require('../config/auth');
 
 
-router.get('/', ensureAuthenticated, (req, res)=>{
-    res.render('index')
+router.get('/',  ensureAuthenticated, async(req, res)=>{
+    console.log(req.user.email)
+    const currentAdmin = req.user.email
+    res.render('index', {currentAdmin})
 });
 
 router.get('/login', (req, res)=>{

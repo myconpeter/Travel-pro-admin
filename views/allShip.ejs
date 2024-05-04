@@ -104,7 +104,9 @@ body {
                 <th scope="col">NAME</th>
                 <th scope="col">ORDER NO</th>
                 <th scope="col">TICKET ID</th>
-                <th scope="col">ACTION</th>
+
+                <th scope="col">UPDATE</th>
+                <th scope="col">DELETE</th>
               </tr>
             </thead>
             <tbody>
@@ -113,6 +115,9 @@ body {
                         <td><%= ticket.name %></td>
                         <td><%= ticket.orderNumber %></td>
                         <td><%= ticket.client %></td>
+                        <td>
+                            <a href="/editShip/<%= ticket._id %>" style="background-color: darkgreen; color: white; font-size: 20px; border-radius: 5px; padding: 5px 10px;">Edit</a>
+                        </td>
                         <td>
                             <a href="/deleteShip/<%= ticket._id %>" style="background-color: red; color: white; font-size: 20px; border-radius: 5px; padding: 5px 10px;">Delete</a>
                         </td>

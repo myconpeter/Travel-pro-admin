@@ -8,6 +8,7 @@ const createShipSchema = mongoose.Schema({
     shipmentType:String,
     time:String,
     from:String,
+    currentLocation:String,
     to:String,
     departure:String,
     ticketId: String,
