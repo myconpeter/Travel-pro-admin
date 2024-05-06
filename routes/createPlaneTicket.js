@@ -12,7 +12,7 @@ router.post('/createPlane', async (req, res) => {
 
     
     function generateRandomString(length) {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         let result = '';
         for (let i = 0; i < length; i++) {
             result += characters.charAt(Math.floor(Math.random() * characters.length));
@@ -20,10 +20,10 @@ router.post('/createPlane', async (req, res) => {
         return result;
     }
     
-    const randomString = generateRandomString(12);
+    const randomString = generateRandomString(9);
+    
     let { name, seat, gate, flightNo, time, planeClass, from, to, departure } = req.body;
     let client = randomString
-    console.log(req.body)
 
     let errors = [];
     if (!name || !seat || !gate || !flightNo || !time || !planeClass || !from || !to || !departure) {
