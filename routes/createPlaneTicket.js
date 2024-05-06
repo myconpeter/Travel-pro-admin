@@ -81,7 +81,7 @@ router.get('/allFlight', ensureAuthenticated,  async(req,res)=>{
 })
 
 
-router.get('/delete/:id', async (req, res) => {
+router.get('/delete/:id', ensureAuthenticated, async (req, res) => {
     const ticketId = req.params.id;
 
     try {

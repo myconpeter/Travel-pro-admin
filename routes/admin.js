@@ -5,11 +5,11 @@ const bcrypt = require('bcrypt');
 
 const {ensureAuthenticated} = require('../config/auth'); 
 
-router.get('/admincreate',  (req, res)=>{
+router.get('/admincreate', ensureAuthenticated,  (req, res)=>{
     res.render('adminCreate');
 });
 
-router.post('/admincreate', async (req, res) => {
+router.post('/admincreate', ensureAuthenticated, async (req, res) => {
     const { email, password } = req.body;
     console.log(req.body);
 

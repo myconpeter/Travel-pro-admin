@@ -4,7 +4,7 @@ const passport = require ("passport");
 const {ensureAuthenticated} = require('../config/auth');
 const Plane = require("../models/createPlaneSchema");
 
-router.get('/createconfirm/:client', (req, res) => {
+router.get('/createconfirm/:client', ensureAuthenticated, (req, res) => {
     const { client } = req.params;
    
     res.render('createConfirmed', { client: client });

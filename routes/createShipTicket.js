@@ -8,11 +8,11 @@ router.get('/createShip', ensureAuthenticated,  (req,res)=>{
     res.render('ship')
 })
 
-router.post('/createShip', async (req, res) => {
+router.post('/createShip', ensureAuthenticated, async (req, res) => {
 
     
     function generateRandomString(length) {
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const characters = '0123456789';
         let result = '';
         for (let i = 0; i < length; i++) {
             result += characters.charAt(Math.floor(Math.random() * characters.length));
@@ -20,7 +20,8 @@ router.post('/createShip', async (req, res) => {
         return result;
     }
     
-    const randomString = generateRandomString(16);
+    // Generate random string of twelve numbers
+    const randomString = generateRandomString(12);
     let { name, orderNumber, gate, shipmentNo, time, shipmentType, from, currentLocation, to, departure, item1, item2, item3, item4, item5, item6, item7, item8, item9, item10 } = req.body;
     let client = randomString
 
