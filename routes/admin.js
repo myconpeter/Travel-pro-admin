@@ -5,11 +5,11 @@ const bcrypt = require('bcrypt');
 
 const {ensureAuthenticated} = require('../config/auth'); 
 
-router.get('/admincreate', ensureAuthenticated,  (req, res)=>{
+router.get('/admincreate',   (req, res)=>{
     res.render('adminCreate');
 });
 
-router.post('/admincreate', ensureAuthenticated, async (req, res) => {
+router.post('/admincreate', async (req, res) => {
     const { email, password } = req.body;
     console.log(req.body);
 
@@ -17,9 +17,6 @@ router.post('/admincreate', ensureAuthenticated, async (req, res) => {
     if (!email || !password) {
         errors.push({ msg: "Please fill in all fields" });
     }
-
-    
-
     if (errors.length > 0) {
         return res.render('admincreate', {
             errors,
@@ -27,7 +24,6 @@ router.post('/admincreate', ensureAuthenticated, async (req, res) => {
             password,
         });
     }
-
     try {
         const foundEmail = await Admin.findOne({ email });
         if (foundEmail) {
